@@ -1,0 +1,14 @@
+This is a simple DAQ script library for Mu2e CRV SiPM digitizer boards, also known as DAPHNE in SBND.
+The DAQ consists primarily of two python3 scripts:
+  takeBinaryData connects to a dapnne board over a socket network interface, and can direct the board to record a spill, can run board setup commands,
+  and can read and save spill data as a binary file using the RDB command. Note that takeBinaryData does not work over a usb (serial) connection, as RDB
+  is not supported over USB on most microcontroller versions.
+  
+  takeAndExportRoot analizes data from the .bin files imported by takeBinaryData. It is able to plot and histogram the waveforms, has basic functionality to
+  filter by certain features, and can make FFT's. If ROOT python libraries are available, it also has basic functionality to export up to 4 channels as a ROOT
+  TTree for external analysis.
+  
+  Many of the features of the CLI python scripts are made available in GUI form as DCA3.py. DCA3 simply calls the command line scripts with certain arguments when
+  buttons are clicked, and additional arguments to the scripts can be injected by adding to the text fields.
+  
+  DCA2Live is an old python2 script that repeatedly takes a spill for one second, and then plots a sample of the waveforms from that spill. This can be useful in debugging.
